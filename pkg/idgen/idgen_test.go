@@ -2,7 +2,7 @@ package idgen
 
 import (
 	. "github.com/smartystreets/goconvey/convey"
-	"luobo/pkg/idgen/sonyflake"
+	"github.com/wyy-go/go-web-template/pkg/idgen/snowflake"
 	"testing"
 	"time"
 )
@@ -16,20 +16,20 @@ func TestNext(t *testing.T) {
 
 		Convey("should return zero when over the time limit", func() {
 			// setup
-			st := sonyflake.Settings{
+			st := snowflake.Settings{
 				StartTime: time.Date(1883, 1, 1, 0, 0, 0, 0, time.UTC),
 				MachineID: getMachineId,
 			}
-			sf = sonyflake.NewSonyflake(st)
+			sf = snowflake.NewSnowflake(st)
 
 			id := Next()
 			So(id, ShouldEqual, 0)
 
 			// teardown
-			st = sonyflake.Settings{
+			st = snowflake.Settings{
 				MachineID: getMachineId,
 			}
-			sf = sonyflake.NewSonyflake(st)
+			sf = snowflake.NewSnowflake(st)
 		})
 	})
 }
