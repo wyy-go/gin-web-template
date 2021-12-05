@@ -1,8 +1,5 @@
 server:
   port: 8001
-  tcp_port: 3001
-  ws_port: 3002
-  id: 1
   mode: debug
   deploy_env: dev
 logger:
@@ -13,7 +10,7 @@ logger:
   max_age: 7
   compress: true
 mysql:
-  data_source: "root:123456@tcp(127.0.0.1:3306)/xxxx?parseTime=true&loc=Local"
+  data_source: "root:123456@tcp(127.0.0.1:3306)/w_temp?parseTime=true&loc=Local"
   max_idle: 10
   max_open: 100
 redis:

@@ -8,18 +8,19 @@ import (
 )
 
 var (
+	separator = "|"
 	routerTitle  = &sync.Map{}
 	routerRegexp = regexp.MustCompile(`(.*):[^/]+(.*)`)
 )
 
 // SetRouterTitle 设定路由标题
 func SetRouterTitle(method, router, title string) {
-	routerTitle.Store(fmt.Sprintf("%s-%s", method, router), title)
+	routerTitle.Store(fmt.Sprintf("%s%s%s", method, separator ,router), title)
 }
 
 // GetRouterTitleAndKey 获取路由标题和键
 func GetRouterTitleAndKey(method, router string) (string, string) {
-	key := fmt.Sprintf("%s-%s", method, router)
+	key := fmt.Sprintf("%s%s%s", method, separator, router)
 	vv, ok := routerTitle.Load(key)
 	if ok {
 		return vv.(string), key

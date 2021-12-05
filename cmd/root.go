@@ -19,7 +19,7 @@ var rootCmd = &cobra.Command{
 }
 
 func exitError(msg interface{}) {
-	fmt.Fprintln(os.Stderr, msg)
+	_,_ = fmt.Fprintln(os.Stderr, msg)
 	os.Exit(1)
 }
 
