@@ -1,0 +1,41 @@
+package model
+
+import (
+	"gorm.io/plugin/soft_delete"
+	"time"
+)
+
+// 用户
+type User struct {
+	Id             int64                 `json:"id" gorm:"primaryKey;column:id;type:bigint(20)"`                                   // 用户ID
+	LuoboId        string                `json:"luobo_id" gorm:"column:luobo_id;type:varchar(50);not null"`                        // 萝卜号
+	Passwd         string                `json:"passwd" gorm:"column:passwd;type:varchar(64);not null"`                            // 密码
+	Role           string                `json:"role" gorm:"column:role;type:varchar(128);not null"`                               // 角色
+	Type           int                   `json:"type" gorm:"column:type;type:tinyint(4);not null;default:1"`                       // 用户类型
+	CreatedAt      time.Time             `json:"created_at" gorm:"column:created_at;type:datetime;not null"`                       // 创建时间
+	UpdatedAt      time.Time             `json:"updated_at" gorm:"column:updated_at;type:datetime;not null"`                       // 更新时间
+	DeletedAt      soft_delete.DeletedAt `json:"deleted_at" gorm:"column:deleted_at;type:bigint(20);not null;default:0"`           // 删除时间
+	Status         int                   `json:"status" gorm:"column:status;type:tinyint(4);not null;default:0"`                   // 状态
+	Name           string                `json:"name" gorm:"column:name;type:varchar(50);not null"`                                // 姓名
+	Nickname       string                `json:"nickname" gorm:"column:nickname;type:varchar(50);not null"`                        // 昵称
+	Mobile         string                `json:"mobile" gorm:"column:mobile;type:varchar(50);not null"`                            // 手机号
+	MobileVerified int                   `json:"mobile_verified" gorm:"column:mobile_verified;type:tinyint(4);not null;default:0"` // 手机是否被验证
+	Email          string                `json:"email" gorm:"column:email;type:varchar(50);not null"`                              // 邮箱
+	EmailVerified  int                   `json:"email_verified" gorm:"column:email_verified;type:tinyint(4);not null;default:0"`   // 邮箱是否被验证
+	Avatar         string                `json:"avatar" gorm:"column:avatar;type:varchar(256);not null"`                           // 头像
+	Sex            int                   `json:"sex" gorm:"column:sex;type:tinyint(4);not null;default:0"`                         // 性别[1:男;2:女]
+	Lng            string                `json:"lng" gorm:"column:lng;type:decimal(10,7);not null;default:0.0000000"`              // 经度
+	Lat            string                `json:"lat" gorm:"column:lat;type:decimal(10,7);not null;default:0.0000000"`              // 纬度
+	Intro          string                `json:"intro" gorm:"column:intro;type:varchar(1024);not null"`                            // 简介
+	Birth          time.Time             `json:"birth" gorm:"column:birth;type:datetime"`                                          // 出生日期
+	RegisterIp     string                `json:"register_ip" gorm:"column:register_ip;type:varchar(50);not null"`                  // 注册IP
+	LastLoginTime  time.Time             `json:"last_login_time" gorm:"column:last_login_time;type:datetime"`                      // 最近登录时间
+	LastLoginIp    string                `json:"last_login_ip" gorm:"column:last_login_ip;type:varchar(50);not null"`              // 最近登录IP
+	LoginIpLimit   string                `json:"login_ip_limit" gorm:"column:login_ip_limit;type:text;not null"`                   // 登录限制,JSON格式
+	IsCert         int                   `json:"is_cert" gorm:"column:is_cert;type:tinyint(4);not null;default:0"`                 // 是否实名认证[0:未认证 1:已认证]
+	PayPasswd      string                `json:"pay_passwd" gorm:"column:pay_passwd;type:varchar(64);not null"`                    // 交易密码
+}
+
+func (_ *User) TableName() string {
+	return "user"
+}

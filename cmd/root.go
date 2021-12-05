@@ -7,13 +7,24 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	cfgFile string
+)
+
 var rootCmd = &cobra.Command{
-	Use: "go-cli-template",
+	Use: "go-web-template",
+	Short:             "go-web-template server",
+	SilenceUsage:      true,
+	DisableAutoGenTag: true,
 }
 
 func exitError(msg interface{}) {
 	fmt.Fprintln(os.Stderr, msg)
 	os.Exit(1)
+}
+
+func init() {
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "conf/dev.yaml", "config file")
 }
 
 func Execute() {
