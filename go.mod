@@ -13,7 +13,7 @@ require (
 	github.com/hashicorp/go-version v1.3.0
 	github.com/robfig/cron v1.2.0
 	github.com/smartystreets/goconvey v1.6.4
-	github.com/spf13/cast v1.3.1
+	github.com/spf13/cast v1.5.0
 	github.com/spf13/cobra v1.2.1
 	github.com/spf13/viper v1.8.1
 	github.com/tiaotiao/mapstruct v0.0.0-20170819235540-950894f801ed
