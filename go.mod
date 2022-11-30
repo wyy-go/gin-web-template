@@ -18,7 +18,7 @@ require (
 	github.com/spf13/viper v1.8.1
 	github.com/tiaotiao/mapstruct v0.0.0-20170819235540-950894f801ed
 	github.com/wyy-go/wview v0.0.0-20211205123502-c1bd0ee8e7fa
-	go.uber.org/zap v1.17.0
+	go.uber.org/zap v1.24.0
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gorm.io/driver/mysql v1.2.1
